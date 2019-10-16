@@ -25,15 +25,25 @@ import { book, build, colorFill, grid } from 'ionicons/icons';
 import React, { useState } from 'react'
 import './Home.css';
 
-const HomePage: React.FC = (props) => {
+const HomePage: React.FC = () => {
+  //Hooks
   const [count, setCount] = useState(0)
   const [url, setUrl] = useState('')
-  const [resources, addResource] = useState({})
-  console.log(count)
+  const [category, setCategory] = useState('')
+  const [resources, addResource] = useState([])
 
-  const submit = (event) => {
-    console.log(event.target.value)
-}
+  //Input onChanges
+  const onUrlChange = (event) => {
+    setUrl(event.target.value)
+  }
+  const onCategoryChange = (event) => {
+    setCategory(event.target.value)
+  }
+  //Submit form
+  const onFormSubmit = () => {
+    let newResource = { "url": url, "category": category }
+    addResource([...resources, newResource])
+  }
 
   return (
     <IonPage>
@@ -63,29 +73,45 @@ const HomePage: React.FC = (props) => {
               autofocus={true}
               clearInput={true}
               required={true}
-              onIonChange={submit}>
+              name="url"
+              onIonChange={onUrlChange}>
             </IonInput>
           </IonItem>
           <IonItem>
             <IonLabel>Category || Technology</IonLabel>
-            <IonSelect placeholder="Select One">
-              <IonSelectOption value="React">React</IonSelectOption>
-              <IonSelectOption value="m">JavaScript</IonSelectOption>
-              <IonSelectOption value="m">Ruby</IonSelectOption>
-              <IonSelectOption value="m">Rails</IonSelectOption>
-              <IonSelectOption value="m">Go</IonSelectOption>
-              <IonSelectOption value="m">CSS</IonSelectOption>
-              <IonSelectOption value="m">Semantic-ui</IonSelectOption>
+            <IonSelect
+              placeholder="Select One"
+              name="category"
+              onIonChange={onCategoryChange}>
+              <IonSelectOption value="react">React</IonSelectOption>
+              <IonSelectOption value="javascript">JavaScript</IonSelectOption>
+              <IonSelectOption value="ruby">Ruby</IonSelectOption>
+              <IonSelectOption value="rails">Rails</IonSelectOption>
+              <IonSelectOption value="go">Go</IonSelectOption>
+              <IonSelectOption value="css">CSS</IonSelectOption>
+              <IonSelectOption value="semantic-ui">Semantic-ui</IonSelectOption>
             </IonSelect>
           </IonItem>
           <IonItem>
             <IonButton
               size="small"
-              onClick={() => setCount(count + 1)}>
+              onClick={onFormSubmit}>
               Add Resource
             </IonButton>
           </IonItem>
         </IonCard>
+
+        {resources.map(resource => {
+          return (
+            <IonItem >
+              <div className="item-note" slot="end">
+                {resource.url}
+              </div>
+            </IonItem>
+          )
+        })}
+        
+        
       </IonContent>
     </IonPage>
   );
