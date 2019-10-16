@@ -15,13 +15,26 @@ import {
   IonMenuButton,
   IonPage,
   IonTitle,
-  IonToolbar
+  IonToolbar,
+  IonInput,
+  IonSelect,
+  IonSelectOption,
+  IonButton
   } from '@ionic/react';
 import { book, build, colorFill, grid } from 'ionicons/icons';
-import React from 'react';
+import React, { useState } from 'react'
 import './Home.css';
 
-const HomePage: React.FC = () => {
+const HomePage: React.FC = (props) => {
+  const [count, setCount] = useState(0)
+  const [url, setUrl] = useState('')
+  const [resources, addResource] = useState({})
+  console.log(count)
+
+  const submit = (event) => {
+    console.log(event.target.value)
+}
+
   return (
     <IonPage>
       <IonHeader>
@@ -34,40 +47,45 @@ const HomePage: React.FC = () => {
       </IonHeader>
       <IonContent>
         <IonCard className="welcome-card">
-          <img src="/assets/shapes.svg" alt=""/>
+          <img src="/assets/Embedded-Software-Engineering.jpeg" alt=""/>
           <IonCardHeader>
             <IonCardSubtitle>Get Started</IonCardSubtitle>
-            <IonCardTitle>Welcome to Ionic</IonCardTitle>
+            <IonCardTitle>Welcome to Development Resources</IonCardTitle>
           </IonCardHeader>
           <IonCardContent>
             <p>
-              Now that your app has been created, you'll want to start building out features and
-              components. Check out some of the resources below for next steps.
+             Your one stop show for saving and sharing resources to help you with your next programming adventure.
             </p>
           </IonCardContent>
+          <IonItem>
+            <IonInput
+              placeholder="Resource Url"
+              autofocus={true}
+              clearInput={true}
+              required={true}
+              onIonChange={submit}>
+            </IonInput>
+          </IonItem>
+          <IonItem>
+            <IonLabel>Category || Technology</IonLabel>
+            <IonSelect placeholder="Select One">
+              <IonSelectOption value="React">React</IonSelectOption>
+              <IonSelectOption value="m">JavaScript</IonSelectOption>
+              <IonSelectOption value="m">Ruby</IonSelectOption>
+              <IonSelectOption value="m">Rails</IonSelectOption>
+              <IonSelectOption value="m">Go</IonSelectOption>
+              <IonSelectOption value="m">CSS</IonSelectOption>
+              <IonSelectOption value="m">Semantic-ui</IonSelectOption>
+            </IonSelect>
+          </IonItem>
+          <IonItem>
+            <IonButton
+              size="small"
+              onClick={() => setCount(count + 1)}>
+              Add Resource
+            </IonButton>
+          </IonItem>
         </IonCard>
-
-        <IonList lines="none">
-          <IonListHeader>
-            <IonLabel>Resources</IonLabel>
-          </IonListHeader>
-          <IonItem href="https://ionicframework.com/docs/" target="_blank">
-            <IonIcon slot="start" color="medium" icon={book} />
-            <IonLabel>Ionic Documentation</IonLabel>
-          </IonItem>
-          <IonItem href="https://ionicframework.com/docs/building/scaffolding" target="_blank">
-            <IonIcon slot="start" color="medium" icon={build} />
-            <IonLabel>Scaffold Out Your App</IonLabel>
-          </IonItem>
-          <IonItem href="https://ionicframework.com/docs/layout/structure" target="_blank">
-            <IonIcon slot="start" color="medium" icon={grid} />
-            <IonLabel>Change Your App Layout</IonLabel>
-          </IonItem>
-          <IonItem href="https://ionicframework.com/docs/theming/basics" target="_blank">
-            <IonIcon slot="start" color="medium" icon={colorFill} />
-            <IonLabel>Theme Your App</IonLabel>
-          </IonItem>
-        </IonList>
       </IonContent>
     </IonPage>
   );
