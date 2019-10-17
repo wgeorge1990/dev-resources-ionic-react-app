@@ -21,7 +21,11 @@ import {
   IonSelectOption,
   IonButton,
   IonReorder,
-  IonReorderGroup
+  IonReorderGroup,
+  useIonViewDidEnter,
+  useIonViewDidLeave,
+  useIonViewWillEnter,
+  useIonViewWillLeave
   } from '@ionic/react';
 // import { book, build, colorFill, grid } from 'ionicons/icons';
 import React, { useState } from 'react'
@@ -31,8 +35,7 @@ const HomePage = (props) => {
   //Hooks
   const [url, setUrl] = useState('')
   const [category, setCategory] = useState('')
-  const [resources, addResource] = useState([])
-
+  const [description, setDescription] = useState('')
   //Input onChanges
   const onUrlChange = (event) => {
     setUrl(event.target.value)
@@ -40,12 +43,11 @@ const HomePage = (props) => {
   const onCategoryChange = (event) => {
     setCategory(event.target.value)
   }
-  //Submit form
-  const onFormSubmit = () => {
-    let newResource = { "url": url, "category": category }
-    addResource([...resources, newResource])
-  }
 
+  const onDescriptionChange = (event) => {
+    setDescription(event.target.value)
+  }
+  
   const doReorder = (event) => {
     // The `from` and `to` properties contain the index of the item
     // when the drag started and ended, respectively
@@ -55,6 +57,14 @@ const HomePage = (props) => {
     // by the reorder group
     event.detail.complete();
   }
+
+  // useIonViewDidEnter(() => {
+  //   console.log('ionViewDidEnter event fired');
+  // });
+  // useIonViewDidLeave(() => {
+  //   console.log('ionViewDidLeave event fired');
+  // });
+
   return (
     <IonPage>
       <IonHeader>
@@ -88,6 +98,16 @@ const HomePage = (props) => {
             </IonInput>
           </IonItem>
           <IonItem>
+            <IonInput
+              placeholder="Description"
+              autofocus={true}
+              clearInput={true}
+              required={true}
+              name="Description"
+              onIonChange={onDescriptionChange}>
+            </IonInput>
+          </IonItem>
+          <IonItem>
             <IonLabel>Category || Technology</IonLabel>
             <IonSelect
               placeholder="Select One"
@@ -105,7 +125,7 @@ const HomePage = (props) => {
           <IonItem>
             <IonButton
               size="small"
-              onClick={onFormSubmit}>
+              onClick={(e)=> props.onFormSubmit(e, url, category, description)}>
               Add Resource
             </IonButton>
           </IonItem>

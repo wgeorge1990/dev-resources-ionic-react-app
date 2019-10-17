@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet, IonSplitPane, withIonLifeCycle, setupConfig } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
@@ -29,12 +29,6 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 // import { statement } from '@babel/template';
 
-setupConfig({
-  rippleEffect: false,
-  mode: 'md',
-  animated: true
-});
-
 const appPages = [
   {
     title: 'Home',
@@ -48,24 +42,39 @@ const appPages = [
   }
 ];
 
-// const App = () => {
-//   //Hook for initial state
-//   const [links, updateResources] = useState([])
-//   //React Hooks lifecycle method handling fetch of initial data
-//   useEffect(() => {
-//     fetch("http://localhost:3000/resources")
-//       .then(res => res.json()
-//         .then(data => updateResources(data)))
-//   }) 
 class App extends React.Component{
   state = {
     resources: []
   }
-  componentDidMount() {
+
+  fetchResources = () => {
     fetch("http://localhost:3000/resources")
       .then(res => res.json()
-        .then(data => this.setState({resources: data})))
+        .then(data => this.setState({ resources: data })))
   }
+
+  componentDidMount() {
+    this.fetchResources()
+  }
+
+  onFormSubmit = (e, url, category, description) => {
+    let newResource = {
+      "url": url,
+      "category": category,
+      "description": description
+    }
+    fetch('http://localhost:3000/resources', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json'
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: JSON.stringify(newResource)
+    }).then(this.fetchResources())
+  }
+  // ionViewWillLeave() {
+  //   console.log('ionViewWillLeave event fired')
+  // }
 
   render() {
     return (
@@ -76,7 +85,13 @@ class App extends React.Component{
             <IonRouterOutlet id="main">
               <Route
                 path="/home"
-                render={props => { return <Home resources={this.state.resources} /> }}
+                render={() => {
+                  return (
+                    <Home
+                      resources={this.state.resources}
+                      onFormSubmit={this.onFormSubmit}/> 
+                  )
+                }}
                 exact={true} />
               <Route
                 path="/home/list"

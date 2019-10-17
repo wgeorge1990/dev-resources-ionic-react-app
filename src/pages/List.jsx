@@ -1,4 +1,21 @@
-import { IonButtons, IonContent, IonHeader, IonItem, IonMenuButton, IonPage, IonTitle, IonToolbar, IonReorderGroup,IonLabel, IonReorder } from '@ionic/react';
+import {
+  IonButtons,
+  IonContent,
+  IonHeader,
+  IonItem,
+  IonMenuButton,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  IonReorderGroup,
+  IonLabel,
+  IonReorder,
+  useIonViewDidEnter,
+  useIonViewDidLeave,
+  useIonViewWillEnter,
+  useIonViewWillLeave
+  
+} from '@ionic/react';
 // import { americanFootball, basketball, beer, bluetooth, boat, build, flask, football, paperPlane, wifi } from 'ionicons/icons';
 import React from 'react';
 
@@ -42,16 +59,3 @@ const ListPage = (props) => {
   );
 };
 export default ListPage
-
-// const items = props.resources.map(x => {
-//     return (
-//       <IonItem key={x.id}>
-//         <IonLabel>{x.url || "this is a sample source"}
-//         </IonLabel>
-//       </IonItem>
-//     );
-//   });
-//   return items;
-// };
-
-// export default ListPage;

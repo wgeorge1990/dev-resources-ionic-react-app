@@ -1,45 +1,43 @@
 {
-    "users": [
-        {
-            "id": 1,
-            "userId": 101,
-            "name": "Will"
-        },
-        {
-            "id": 2,
-            "userId": 102,
-            "name": "Ari"
-        }
-    ],
-    "resources": [
-        {
-            "id": 1,
-            "url": "https://reactjs.org/docs/getting-started.html",
-            "category": "react",
-            "description": "Home page of react official react docs",
-            "sortId": 1
-        },
-        {
-            "id": 2,
-            "url": "https://guides.rubyonrails.org/",
-            "category": "rails",
-            "description": "Home page of official Ruby on Rails docs.",
-            "sortId": 2
-        },
-        {
-            "id": 3,
-            "url": "https://spin.atomicobject.com/2018/10/08/mock-api-json-server/",
-            "category": "json",
-            "description": "How to spin up a simple json server with npm.",
-            "sortId": 3
-        },
-        {
-            "id": 4,
-            "url": "https://coolors.co/141414-9baf74-7b5d5d-ddd0d0-f9efef",
-            "category": "color",
-            "description": "RGB color scheme generator.",
-            "sortId": 4
-        }
-        
-    ]
+  "users": [
+    {
+      "id": 1,
+      "userId": 101,
+      "name": "Will"
+    },
+    {
+      "id": 2,
+      "userId": 102,
+      "name": "Ari"
+    }
+  ],
+  "resources": [
+    {
+      "id": 1,
+      "url": "https://reactjs.org/docs/getting-started.html",
+      "category": "react",
+      "description": "Home page of react official react docs",
+      "sortId": 1
+    },
+    {
+      "id": 2,
+      "url": "https://guides.rubyonrails.org/",
+      "category": "rails",
+      "description": "Home page of official Ruby on Rails docs.",
+      "sortId": 2
+    },
+    {
+      "id": 3,
+      "url": "https://spin.atomicobject.com/2018/10/08/mock-api-json-server/",
+      "category": "json",
+      "description": "How to spin up a simple json server with npm.",
+      "sortId": 3
+    },
+    {
+      "url": "t",
+      "category": "go",
+      "description": "t",
+      "id": 4
+    }
+  ]
 }
