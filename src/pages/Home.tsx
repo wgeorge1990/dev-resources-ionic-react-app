@@ -19,7 +19,9 @@ import {
   IonInput,
   IonSelect,
   IonSelectOption,
-  IonButton
+  IonButton,
+  IonReorder,
+  IonReorderGroup
   } from '@ionic/react';
 import { book, build, colorFill, grid } from 'ionicons/icons';
 import React, { useState } from 'react'
@@ -45,6 +47,19 @@ const HomePage: React.FC = () => {
     addResource([...resources, newResource])
   }
 
+  const doReorder = (event) => {
+    // The `from` and `to` properties contain the index of the item
+    // when the drag started and ended, respectively
+    console.log('Dragged from index', event.detail.from, 'to', event.detail.to);
+
+    // Finish the reorder and position the item in the DOM based on
+    // where the gesture ended. This method can also be called directly
+    // by the reorder group
+    event.detail.complete();
+  }
+
+  let temporaryId = 0
+
   return (
     <IonPage>
       <IonHeader>
@@ -52,7 +67,7 @@ const HomePage: React.FC = () => {
           <IonButtons slot="start">
             <IonMenuButton />
           </IonButtons>
-          <IonTitle>Home</IonTitle>
+          <IonTitle>Development Resources</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>
@@ -101,17 +116,19 @@ const HomePage: React.FC = () => {
           </IonItem>
         </IonCard>
 
-        {resources.map(resource => {
-          return (
-            <IonItem >
-              <div className="item-note" slot="end">
-                {resource.url}
-              </div>
-            </IonItem>
-          )
-        })}
-        
-        
+        <IonReorderGroup disabled={false} onIonItemReorder={doReorder}>
+          {resources.map(resource => {
+            temporaryId++
+            return (
+              <IonReorder>
+                {/* Key is temporary until data is comming from the database and can use id for key */}
+                <IonItem key={temporaryId}>
+                  <IonLabel>{resource.url || "this is a sample source"}</IonLabel>
+                </IonItem>
+              </IonReorder>
+            )
+          })}
+        </IonReorderGroup>
       </IonContent>
     </IonPage>
   );
