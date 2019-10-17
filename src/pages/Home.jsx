@@ -7,6 +7,7 @@ import {
   IonCardTitle,
   IonContent,
   IonHeader,
+  IonThumbnail,
   // IonIcon,
   IonItem,
   IonLabel,
@@ -117,7 +118,9 @@ const HomePage = (props) => {
           </IonItem>
           <IonItem>
             <IonButton
-              size="small"
+              expand="full"
+              size="default"
+              color="tertiary"
               onClick={(e) => props.onFormSubmit(e, url, category, description)}>
               Add Resource
             </IonButton>
@@ -128,11 +131,15 @@ const HomePage = (props) => {
           {props.resources.map(resource => {
             return (
               <IonReorder key={resource.id}>
-                {/* Key is temporary until data is comming from the database and can use id for key */}
-                <IonItem key={resource.id}>
-                  <IonLabel>{resource.url || "this is a sample source"}
-                  </IonLabel>
-                </IonItem>
+                  <IonCard key={resource.id}>
+                    <IonCardHeader>
+                      <IonCardSubtitle>{resource.category}</IonCardSubtitle>
+                      <IonCardTitle>{resource.url}</IonCardTitle>
+                    </IonCardHeader>
+                    <IonCardContent>
+                      {resource.description}
+                    </IonCardContent>
+                  </IonCard>
               </IonReorder>
             )
           })}

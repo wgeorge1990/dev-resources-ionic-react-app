@@ -13,7 +13,12 @@ import {
   useIonViewDidEnter,
   useIonViewDidLeave,
   useIonViewWillEnter,
-  useIonViewWillLeave
+  useIonViewWillLeave,
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardTitle,
+  IonCardSubtitle
   
 } from '@ionic/react';
 // import { americanFootball, basketball, beer, bluetooth, boat, build, flask, football, paperPlane, wifi } from 'ionicons/icons';
@@ -46,10 +51,15 @@ const ListPage = (props) => {
             return (
               <IonReorder key={resource.id}>
                 {/* Key is temporary until data is comming from the database and can use id for key */}
-                <IonItem key={resource.id}>
-                  <IonLabel>{resource.url }
-                  </IonLabel>
-                </IonItem>
+                <IonCard key={resource.id}>
+                  <IonCardHeader>
+                    <IonCardSubtitle>{resource.category}</IonCardSubtitle>
+                    <IonCardTitle>{resource.url}</IonCardTitle>
+                  </IonCardHeader>
+                  <IonCardContent>
+                    {resource.description}
+                  </IonCardContent>
+                </IonCard>
               </IonReorder>
             )
           })}
