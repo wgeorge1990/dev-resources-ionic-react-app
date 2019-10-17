@@ -7,11 +7,11 @@ import {
   IonCardTitle,
   IonContent,
   IonHeader,
-  IonIcon,
+  // IonIcon,
   IonItem,
   IonLabel,
-  IonList,
-  IonListHeader,
+  // IonList,
+  // IonListHeader,
   IonMenuButton,
   IonPage,
   IonTitle,
@@ -23,13 +23,12 @@ import {
   IonReorder,
   IonReorderGroup
   } from '@ionic/react';
-import { book, build, colorFill, grid } from 'ionicons/icons';
+// import { book, build, colorFill, grid } from 'ionicons/icons';
 import React, { useState } from 'react'
 import './Home.css';
 
-const HomePage: React.FC = () => {
+const HomePage = (props) => {
   //Hooks
-  const [count, setCount] = useState(0)
   const [url, setUrl] = useState('')
   const [category, setCategory] = useState('')
   const [resources, addResource] = useState([])
@@ -50,16 +49,12 @@ const HomePage: React.FC = () => {
   const doReorder = (event) => {
     // The `from` and `to` properties contain the index of the item
     // when the drag started and ended, respectively
-    console.log('Dragged from index', event.detail.from, 'to', event.detail.to);
-
+    // console.log('Dragged from index', event.detail.from, 'to', event.detail.to);
     // Finish the reorder and position the item in the DOM based on
     // where the gesture ended. This method can also be called directly
     // by the reorder group
     event.detail.complete();
   }
-
-  let temporaryId = 0
-
   return (
     <IonPage>
       <IonHeader>
@@ -117,13 +112,13 @@ const HomePage: React.FC = () => {
         </IonCard>
 
         <IonReorderGroup disabled={false} onIonItemReorder={doReorder}>
-          {resources.map(resource => {
-            temporaryId++
+          {props.resources.map(resource => {
             return (
-              <IonReorder>
+              <IonReorder key={resource.id}>
                 {/* Key is temporary until data is comming from the database and can use id for key */}
-                <IonItem key={temporaryId}>
-                  <IonLabel>{resource.url || "this is a sample source"}</IonLabel>
+                <IonItem key={resource.id}>
+                  <IonLabel>{resource.url || "this is a sample source"}
+                  </IonLabel>
                 </IonItem>
               </IonReorder>
             )
