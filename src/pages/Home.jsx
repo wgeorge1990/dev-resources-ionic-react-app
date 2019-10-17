@@ -28,7 +28,7 @@ import {
   useIonViewWillLeave
   } from '@ionic/react';
 // import { book, build, colorFill, grid } from 'ionicons/icons';
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './Home.css';
 
 const HomePage = (props) => {
@@ -47,7 +47,7 @@ const HomePage = (props) => {
   const onDescriptionChange = (event) => {
     setDescription(event.target.value)
   }
-  
+
   const doReorder = (event) => {
     // The `from` and `to` properties contain the index of the item
     // when the drag started and ended, respectively
@@ -57,13 +57,6 @@ const HomePage = (props) => {
     // by the reorder group
     event.detail.complete();
   }
-
-  // useIonViewDidEnter(() => {
-  //   console.log('ionViewDidEnter event fired');
-  // });
-  // useIonViewDidLeave(() => {
-  //   console.log('ionViewDidLeave event fired');
-  // });
 
   return (
     <IonPage>
@@ -125,7 +118,7 @@ const HomePage = (props) => {
           <IonItem>
             <IonButton
               size="small"
-              onClick={(e)=> props.onFormSubmit(e, url, category, description)}>
+              onClick={(e) => props.onFormSubmit(e, url, category, description)}>
               Add Resource
             </IonButton>
           </IonItem>

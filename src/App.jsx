@@ -53,11 +53,11 @@ class App extends React.Component{
         .then(data => this.setState({ resources: data })))
   }
 
-  componentDidMount() {
+ async componentDidMount() {
     this.fetchResources()
   }
 
-  onFormSubmit = (e, url, category, description) => {
+   onFormSubmit = (e, url, category, description) => {
     let newResource = {
       "url": url,
       "category": category,
@@ -70,11 +70,14 @@ class App extends React.Component{
         // 'Content-Type': 'application/x-www-form-urlencoded',
       },
       body: JSON.stringify(newResource)
-    }).then(this.fetchResources())
+    }).then(res => res.json()).then(data => {
+      let newState = [...this.state.resources, data]
+      console.log(newState)
+      return (
+        this.setState({ resources: newState })
+      )
+    })
   }
-  // ionViewWillLeave() {
-  //   console.log('ionViewWillLeave event fired')
-  // }
 
   render() {
     return (
