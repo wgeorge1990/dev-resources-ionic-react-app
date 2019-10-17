@@ -26,7 +26,10 @@ import {
   useIonViewDidEnter,
   useIonViewDidLeave,
   useIonViewWillEnter,
-  useIonViewWillLeave
+  useIonViewWillLeave,
+  IonChip,
+  IonAvatar,
+  IonImg
   } from '@ionic/react';
 // import { book, build, colorFill, grid } from 'ionicons/icons';
 import React, { useState, useEffect } from 'react'
@@ -131,13 +134,23 @@ const HomePage = (props) => {
           {props.resources.map(resource => {
             return (
               <IonReorder key={resource.id}>
-                  <IonCard key={resource.id}>
+                <IonCard className="IonCard" key={resource.id}>
                     <IonCardHeader>
-                      <IonCardSubtitle>{resource.category}</IonCardSubtitle>
-                      <IonCardTitle>{resource.url}</IonCardTitle>
-                    </IonCardHeader>
-                    <IonCardContent>
-                      {resource.description}
+                    <IonCardSubtitle className="IonCardSubtitle"> 
+                      
+                    </IonCardSubtitle>
+                    <IonThumbnail >
+                      <IonImg src={require("../images/download.png")} className="IonThumbnail" />
+                    </IonThumbnail>
+                    <IonCardTitle
+                      className="IonCardTitle">
+                      <h1>{resource.url}</h1></IonCardTitle>
+                    
+                  </IonCardHeader>
+                  <IonCardContent className="IonCardContent">
+                   
+                    {resource.description}
+                    
                     </IonCardContent>
                   </IonCard>
               </IonReorder>

@@ -36,7 +36,7 @@ const appPages = [
     icon: home
   },
   {
-    title: 'List',
+    title: 'Resources',
     url: '/home/list',
     icon: list
   }

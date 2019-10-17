@@ -2,4 +2,23 @@
   max-height: 35vh;
   overflow: hidden;
 }
+.IonCard {
+  background-color: rgb(189, 213, 189);
+}
+.IonCardTitle {
+  text-align: center;
+  font-size: 20px;
+}
 
+.IonCardContent {
+  font-size: 30px;
+  text-align: center;
+}
+.IonCardSubtitle {
+  font-size: 20px;
+}
+
+.IonThumbnail {
+  width: 200%;
+  height: 200%;
+}

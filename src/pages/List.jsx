@@ -34,7 +34,7 @@ const doReorder = (event) => {
   event.detail.complete();
 }
 
-const ListPage = (props) => {
+const Resources = (props) => {
   return (
     <IonPage>
       <IonHeader>
@@ -42,7 +42,7 @@ const ListPage = (props) => {
           <IonButtons slot="start">
             <IonMenuButton />
           </IonButtons>
-          <IonTitle>List</IonTitle>
+          <IonTitle>Resources</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>
@@ -51,12 +51,12 @@ const ListPage = (props) => {
             return (
               <IonReorder key={resource.id}>
                 {/* Key is temporary until data is comming from the database and can use id for key */}
-                <IonCard key={resource.id}>
-                  <IonCardHeader>
-                    <IonCardSubtitle>{resource.category}</IonCardSubtitle>
-                    <IonCardTitle>{resource.url}</IonCardTitle>
+                <IonCard key={resource.id} className="IonCard">
+                  <IonCardHeader className="IonCardHeader">
+                    <IonCardSubtitle className="IonCardSubtitle">{resource.category}</IonCardSubtitle>
+                    <IonCardTitle className="IonCardTitle">{resource.url}</IonCardTitle>
                   </IonCardHeader>
-                  <IonCardContent>
+                  <IonCardContent className="IonCardContent">
                     {resource.description}
                   </IonCardContent>
                 </IonCard>
@@ -68,4 +68,4 @@ const ListPage = (props) => {
     </IonPage>
   );
 };
-export default ListPage
+export default Resources
