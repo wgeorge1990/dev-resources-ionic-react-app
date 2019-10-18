@@ -32,6 +32,18 @@
       "category": "json",
       "description": "How to spin up a simple json server with npm.",
       "sortId": 3
+    },
+    {
+      "url": "https://ionicons.com/",
+      "category": "rails",
+      "description": "give it a description",
+      "id": 4
+    },
+    {
+      "url": "",
+      "category": "",
+      "description": "",
+      "id": 5
     }
   ]
 }

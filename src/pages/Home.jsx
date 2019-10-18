@@ -29,7 +29,9 @@ import {
   useIonViewWillLeave,
   IonChip,
   IonAvatar,
-  IonImg
+  IonImg,
+  IonSkeletonText,
+  IonIcon
   } from '@ionic/react';
 // import { book, build, colorFill, grid } from 'ionicons/icons';
 import React, { useState, useEffect } from 'react'
@@ -63,17 +65,17 @@ const HomePage = (props) => {
   }
 
   return (
-    <IonPage>
-      <IonHeader>
-        <IonToolbar>
+    <IonPage >
+      <IonHeader className="IonHeader" >
+        <IonToolbar className="IonToolbar">
           <IonButtons slot="start">
-            <IonMenuButton />
+            <IonMenuButton/>
           </IonButtons>
-          <IonTitle>Development Resources</IonTitle>
+          <IonTitle className='app-title'>Development Resources</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
-        <IonCard className="welcome-card">
+      <IonContent className="IonContent" color="egghead">
+        <IonCard className="welcome-card" >
           <img src="/assets/Embedded-Software-Engineering.jpeg" alt=""/>
           <IonCardHeader>
             <IonCardSubtitle>Get Started</IonCardSubtitle>
@@ -133,27 +135,26 @@ const HomePage = (props) => {
         <IonReorderGroup disabled={false} onIonItemReorder={doReorder}>
           {props.resources.map(resource => {
             return (
-              <IonReorder key={resource.id}>
                 <IonCard className="IonCard" key={resource.id}>
-                    <IonCardHeader>
-                    <IonCardSubtitle className="IonCardSubtitle"> 
-                      
-                    </IonCardSubtitle>
-                    <IonThumbnail >
-                      <IonImg src={require("../images/download.png")} className="IonThumbnail" />
-                    </IonThumbnail>
-                    <IonCardTitle
-                      className="IonCardTitle">
-                      <h1>{resource.url}</h1></IonCardTitle>
-                    
-                  </IonCardHeader>
-                  <IonCardContent className="IonCardContent">
-                   
-                    {resource.description}
-                    
-                    </IonCardContent>
-                  </IonCard>
-              </IonReorder>
+                  <IonItem>
+                    <IonThumbnail slot="start">
+                      <IonImg src={require("../images/download.png")} />
+                  </IonThumbnail>
+                  
+                    <IonLabel>
+                      <h3>
+                        {resource.description}
+                      </h3>
+                      <p>
+                        {resource.url}
+                      </p>
+                      <p>
+                        {resource.category}
+                      </p>
+                  </IonLabel>
+                  <IonReorder key={resource.id} slot="end" />
+                  </IonItem>
+                </IonCard>
             )
           })}
         </IonReorderGroup>

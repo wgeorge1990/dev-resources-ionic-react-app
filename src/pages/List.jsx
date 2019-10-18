@@ -18,11 +18,14 @@ import {
   IonCardContent,
   IonCardHeader,
   IonCardTitle,
-  IonCardSubtitle
+  IonCardSubtitle,
+  IonThumbnail,
+  IonImg
   
 } from '@ionic/react';
 // import { americanFootball, basketball, beer, bluetooth, boat, build, flask, football, paperPlane, wifi } from 'ionicons/icons';
 import React from 'react';
+import './List.css';
 
 const doReorder = (event) => {
   // The `from` and `to` properties contain the index of the item
@@ -45,22 +48,29 @@ const Resources = (props) => {
           <IonTitle>Resources</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
+      <IonContent className="work" color="egghead-tint">
         <IonReorderGroup disabled={false} onIonItemReorder={doReorder}>
           {props.resources.map(resource => {
             return (
-              <IonReorder key={resource.id}>
-                {/* Key is temporary until data is comming from the database and can use id for key */}
-                <IonCard key={resource.id} className="IonCard">
-                  <IonCardHeader className="IonCardHeader">
-                    <IonCardSubtitle className="IonCardSubtitle">{resource.category}</IonCardSubtitle>
-                    <IonCardTitle className="IonCardTitle">{resource.url}</IonCardTitle>
-                  </IonCardHeader>
-                  <IonCardContent className="IonCardContent">
-                    {resource.description}
-                  </IonCardContent>
+                <IonCard className="IonCard" key={resource.id}>
+                  <IonItem>
+                    <IonThumbnail slot="start">
+                      <IonImg src={require("../images/download.png")} />
+                    </IonThumbnail>
+                    <IonLabel>
+                      <h3>
+                        {resource.description}
+                      </h3>
+                      <p>
+                        {resource.url}
+                      </p>
+                      <p>
+                        {resource.category}
+                      </p>
+                  </IonLabel>
+                    <IonReorder key={resource.id} slot="end" />
+                  </IonItem>
                 </IonCard>
-              </IonReorder>
             )
           })}
         </IonReorderGroup>

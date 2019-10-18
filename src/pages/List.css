@@ -1,0 +1,20 @@
+.work {
+    background-color: var(--ion-color-egghead-shade);
+}
+
+:root {
+    --ion-color-egghead: #f4f7f9;
+    --ion-color-egghead-rgb: 244, 247, 249;
+    --ion-color-egghead-contrast: #000000;
+    --ion-color-egghead-contrast-rgb: 0, 0, 0;
+    --ion-color-egghead-shade: #d7d9db;
+    --ion-color-egghead-tint: #e9eef2;
+
+    --ion-color-brick: #edb398;
+    --ion-color-brick-rgb: 237, 179, 152;
+    --ion-color-brick-contrast: #000000;
+    --ion-color-brick-contrast-rgb: 0, 0, 0;
+    --ion-color-brick-shade: #d19e86;
+    --ion-color-brick-tint: #efbba2;
+
+}

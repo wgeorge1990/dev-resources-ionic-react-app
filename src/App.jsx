@@ -42,7 +42,7 @@ const appPages = [
   }
 ];
 
-class App extends React.Component{
+class App extends React.Component {
   state = {
     resources: []
   }
@@ -53,11 +53,11 @@ class App extends React.Component{
         .then(data => this.setState({ resources: data })))
   }
 
- async componentDidMount() {
+  componentDidMount() {
     this.fetchResources()
   }
 
-   onFormSubmit = (e, url, category, description) => {
+  onFormSubmit = (e, url, category, description) => {
     let newResource = {
       "url": url,
       "category": category,
@@ -81,10 +81,10 @@ class App extends React.Component{
 
   render() {
     return (
-      <IonApp>
+      <IonApp >
         <IonReactRouter >
           <IonSplitPane contentId="main">
-            <Menu appPages={appPages} />
+            <Menu appPages={appPages} className="IonMenu"/>
             <IonRouterOutlet id="main">
               <Route
                 path="/home"
