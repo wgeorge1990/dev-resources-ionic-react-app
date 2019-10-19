@@ -31,7 +31,8 @@ import {
   IonAvatar,
   IonImg,
   IonSkeletonText,
-  IonIcon
+  IonIcon,
+  IonSearchbar
   } from '@ionic/react';
 // import { book, build, colorFill, grid } from 'ionicons/icons';
 import React, { useState, useEffect } from 'react'
@@ -68,10 +69,11 @@ const HomePage = (props) => {
     <IonPage >
       <IonHeader className="IonHeader" >
         <IonToolbar className="IonToolbar">
+          
           <IonButtons slot="start">
             <IonMenuButton/>
           </IonButtons>
-          <IonTitle className='app-title'>Development Resources</IonTitle>
+            <IonTitle className='app-title'>Development Resources</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent className="IonContent" color="egghead">

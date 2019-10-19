@@ -20,12 +20,15 @@ import {
   IonCardTitle,
   IonCardSubtitle,
   IonThumbnail,
-  IonImg
+  IonImg,
+  IonSearchbar
   
 } from '@ionic/react';
 // import { americanFootball, basketball, beer, bluetooth, boat, build, flask, football, paperPlane, wifi } from 'ionicons/icons';
-import React from 'react';
+import React, {useState} from 'react';
 import './List.css';
+
+
 
 const doReorder = (event) => {
   // The `from` and `to` properties contain the index of the item
@@ -37,7 +40,12 @@ const doReorder = (event) => {
   event.detail.complete();
 }
 
+const handleSearch = (event) => {
+  console.log(event.target.value)
+}
+
 const Resources = (props) => {
+  const [searchTerm, setSearchTerm] = useState('')
   return (
     <IonPage>
       <IonHeader>
@@ -45,7 +53,9 @@ const Resources = (props) => {
           <IonButtons slot="start">
             <IonMenuButton />
           </IonButtons>
-          <IonTitle>Resources</IonTitle>
+          <IonSearchbar value={searchTerm} ionChange={handleSearch}/>
+            <IonTitle className='toolbar-resources-text' >Resources</IonTitle>
+            
         </IonToolbar>
       </IonHeader>
       <IonContent className="work" color="egghead-tint">
