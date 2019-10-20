@@ -40,12 +40,14 @@ const doReorder = (event) => {
   event.detail.complete();
 }
 
-const handleSearch = (event) => {
-  console.log(event.target.value)
-}
-
-const Resources = (props) => {
+  const Resources = (props) => {
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value)
+  }
   const [searchTerm, setSearchTerm] = useState('')
+    const searchedResources = props.resources.filter(resource => resource.description.toLowerCase().includes(searchTerm))
+    console.log(searchedResources)
+    
   return (
     <IonPage>
       <IonHeader>
@@ -53,14 +55,15 @@ const Resources = (props) => {
           <IonButtons slot="start">
             <IonMenuButton />
           </IonButtons>
-          <IonSearchbar value={searchTerm} ionChange={handleSearch}/>
-            <IonTitle className='toolbar-resources-text' >Resources</IonTitle>
-            
+          <IonTitle className='toolbar-resources-text'>
+            Resources
+            </IonTitle>
         </IonToolbar>
+        <IonSearchbar value={searchTerm} onIonChange={handleSearch} />
       </IonHeader>
       <IonContent className="work" color="egghead-tint">
         <IonReorderGroup disabled={false} onIonItemReorder={doReorder}>
-          {props.resources.map(resource => {
+          {searchedResources.map(resource => {
             return (
                 <IonCard className="IonCard" key={resource.id}>
                   <IonItem>
@@ -72,7 +75,7 @@ const Resources = (props) => {
                         {resource.description}
                       </h3>
                       <p>
-                        {resource.url}
+                      <a href={`${resource.url}`} target="_blank">{resource.url}</a>
                       </p>
                       <p>
                         {resource.category}
