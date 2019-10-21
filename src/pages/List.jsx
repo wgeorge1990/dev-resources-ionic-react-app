@@ -28,8 +28,6 @@ import {
 import React, {useState} from 'react';
 import './List.css';
 
-
-
 const doReorder = (event) => {
   // The `from` and `to` properties contain the index of the item
   // when the drag started and ended, respectively
@@ -40,14 +38,21 @@ const doReorder = (event) => {
   event.detail.complete();
 }
 
-  const Resources = (props) => {
-  const handleSearch = (event) => {
-    setSearchTerm(event.target.value)
-  }
+const Resources = (props) => {
+  //Search term hook
   const [searchTerm, setSearchTerm] = useState('')
-    const searchedResources = props.resources.filter(resource => resource.description.toLowerCase().includes(searchTerm))
-    console.log(searchedResources)
-    
+  
+  //Handles search event
+  const handleSearch = (event) => {
+      setSearchTerm(event.target.value)
+  }
+  //Function that handles filtering the resources props that are passed down from app, based on the searchTerm state saved via setSearchTermHook
+  const searchedResources = props.resources.filter(resource =>
+    resource.description.toLowerCase().includes(searchTerm) ||
+    resource.category.toLowerCase().includes(searchTerm) ||
+    resource.url.toLowerCase().includes(searchTerm)
+  )
+
   return (
     <IonPage>
       <IonHeader>
