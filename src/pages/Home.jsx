@@ -23,16 +23,7 @@ import {
   IonButton,
   IonReorder,
   IonReorderGroup,
-  useIonViewDidEnter,
-  useIonViewDidLeave,
-  useIonViewWillEnter,
-  useIonViewWillLeave,
-  IonChip,
-  IonAvatar,
   IonImg,
-  IonSkeletonText,
-  IonIcon,
-  IonSearchbar
   } from '@ionic/react';
 // import { book, build, colorFill, grid } from 'ionicons/icons';
 import React, { useState, useEffect } from 'react'
