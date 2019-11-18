@@ -41,5 +41,4 @@ const Menu: React.FunctionComponent<MenuProps> = ({ appPages }) => (
     </IonContent>
   </IonMenu>
 );
-
 export default withRouter(Menu);

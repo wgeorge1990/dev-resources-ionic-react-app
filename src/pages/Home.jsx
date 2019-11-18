@@ -60,7 +60,6 @@ const HomePage = (props) => {
     <IonPage >
       <IonHeader className="IonHeader" >
         <IonToolbar className="IonToolbar">
-          
           <IonButtons slot="start">
             <IonMenuButton/>
           </IonButtons>
