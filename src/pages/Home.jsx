@@ -127,26 +127,25 @@ const HomePage = (props) => {
         <IonReorderGroup disabled={false} onIonItemReorder={doReorder}>
           {props.resources.map(resource => {
             return (
-                <IonCard className="IonCard" key={resource.id}>
-                  <IonItem>
-                    <IonThumbnail slot="start">
-                      <IonImg src={require("../images/download.png")} />
+              <IonCard className="IonCard" key={resource.id}>
+                <IonItem>
+                  <IonThumbnail slot="start">
+                    <IonImg src={require("../images/download.png")} />
                   </IonThumbnail>
-                  
-                    <IonLabel>
-                      <h3>
-                        {resource.description}
-                      </h3>
-                      <p>
-                        {resource.url}
-                      </p>
-                      <p>
-                        {resource.category}
-                      </p>
+                  <IonLabel>
+                    <h3>
+                      {resource.description}
+                    </h3>
+                    <p>
+                      <a href={`${resource.url}`} target="_blank">{resource.url}</a>
+                    </p>
+                    <p>
+                      {resource.category}
+                    </p>
                   </IonLabel>
                   <IonReorder key={resource.id} slot="end" />
-                  </IonItem>
-                </IonCard>
+                </IonItem>
+              </IonCard>
             )
           })}
         </IonReorderGroup>

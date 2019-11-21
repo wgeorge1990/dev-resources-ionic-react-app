@@ -46,6 +46,7 @@ const Resources = (props) => {
   const handleSearch = (event) => {
       setSearchTerm(event.target.value)
   }
+  
   //Function that handles filtering the resources props that are passed down from app, based on the searchTerm state saved via setSearchTermHook
   const searchedResources = props.resources.filter(resource =>
     resource.description.toLowerCase().includes(searchTerm) ||
