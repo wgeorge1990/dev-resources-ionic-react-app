@@ -1,5 +1,7 @@
 {
   "name": "DevResources",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "react"
 }
