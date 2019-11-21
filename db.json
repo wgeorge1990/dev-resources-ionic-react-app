@@ -44,6 +44,18 @@
       "category": "",
       "description": "",
       "id": 5
+    },
+    {
+      "url": "https://capacitor.ionicframework.com/docs/",
+      "category": "react",
+      "description": "Home docs for capacitor, an alternate runtime for react native",
+      "id": 6
+    },
+    {
+      "url": "",
+      "category": "",
+      "description": "",
+      "id": 7
     }
   ]
 }
