@@ -110,7 +110,10 @@ const HomePage = (props) => {
               <IonSelectOption value="rails">Rails</IonSelectOption>
               <IonSelectOption value="go">Go</IonSelectOption>
               <IonSelectOption value="css">CSS</IonSelectOption>
-              <IonSelectOption value="semantic-ui">Semantic-ui</IonSelectOption>
+              <IonSelectOption value="bootstrap">Bootstrap</IonSelectOption>
+              <IonSelectOption value="java">java</IonSelectOption>
+              <IonSelectOption value="node">Node</IonSelectOption>
+              <IonSelectOption value="Algorithms">Algorithms</IonSelectOption>
             </IonSelect>
           </IonItem>
           <IonItem>
